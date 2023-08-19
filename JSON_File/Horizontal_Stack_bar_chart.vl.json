@@ -1,0 +1,49 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1000,
+  "title":"32nd Dial :2020 by party",
+  "height": 100,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/JSON_File/ire1.csv"
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "bar",
+        "align": "center"
+      },
+      "encoding": {
+        "x": {"aggregate": "sum", "field": "X2020"},
+        "color": {
+          "field": "sort",
+          "scale": {
+            "type": "ordinal",
+            "range": [
+             "#1f78b4","#a6cee3","#33a02c","#b2df8a","#e31a1c","#fdbf6f","#ff7f00","#cab2d6", "#fb9a99"
+            ]           
+          },
+          "legend":null
+        }
+      }
+      
+    },
+    {
+      "mark": {
+        "type": "text",
+        "align": "left",
+        "baseline": "middle",
+        "dy": -3,
+        "color": "white"
+      },
+      "encoding": {
+       "x": {"field": "Pos","sort":"-x","aggregate":"sum"},
+        "text": {"field": "short"}
+      }
+    }
+  ],
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"labels": true,"ticks": false, "domain": false,"tickMinStep": 20,"title":null},
+    "header": {"title": null}
+  }
+}
