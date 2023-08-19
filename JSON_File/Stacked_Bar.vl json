@@ -6,6 +6,7 @@
   "transform": [
     {"calculate": "datum.gender == 'f' ? 'Female' : 'Male'", "as": "gender_label"}
   ],
+  "title": "Masters, Doctorate (Phd) or higher (in thousands)",  
   "mark": "bar",
   "encoding": {
     "x": {
@@ -27,6 +28,7 @@
         "range": ["#1b9e77", "#d95f02"]
       },
       "title": "Masters",
-      "legend": {"title": "Gender"}    }
+      "legend": {"title": "Gender"}
+    }
   }
 }
