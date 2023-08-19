@@ -10,7 +10,7 @@
   "mark": "bar",
   "encoding": {
     "x": {
-      "field": "age",
+      "field": "age_continuous",
       "type": "ordinal",
       "title": "Age Group",
       "axis": {"labelAngle": 0}
@@ -18,7 +18,10 @@
     "y": {
       "field": "number",
       "type": "quantitative",
-      "aggregate": "sum"
+      "aggregate": "sum",
+      "title": "number",
+      "axis": {"format": "~s"}
+
     },
     "color": {
       "field": "gender_label",
