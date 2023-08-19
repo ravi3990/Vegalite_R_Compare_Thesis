@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/JSON_File/ire_100mtr.csv"},
+  "layer": [
+    {
+      "mark": {"type": "point", "filled": true, "size": 60, "color": "#ca0020"},
+      "encoding": {
+        "y": {"field": "name", "type": "nominal", "sort": "x", "axis": {"grid": true}},
+        "x": {"field": "time", "type": "quantitative", "scale": {"domain": [11.25, 11.78]}},
+        "tooltip": [
+          {"field": "time", "title": "minutes", "format": ".2f"},
+          {"field": "name", "title": "Name"}
+        ]
+      }
+    },
+    {
+      "mark": {"type": "rule", "color": "grey60", "opacity": 0.3}, 
+      "encoding": {
+        "y": {"field": "name", "type": "nominal", "sort": "-time"},
+        "x": {"value": 0}
+      }
+    }
+  ],
+  "encoding": {
+    "y": {
+      "field": "name",
+      "type": "nominal",
+      "sort": "x"
+    }
+  },
+  "config": {
+    "axis": {
+      "grid": false,
+      "gridColor": "grey",
+      "gridDash": [1, 4]   
+    }
+  },
+  "width": 450,
+  "height": 400
+}
