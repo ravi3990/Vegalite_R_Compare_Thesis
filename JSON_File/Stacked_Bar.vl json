@@ -1,0 +1,32 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/ire-2016-Masters.csv"},
+  "transform": [
+    {"calculate": "datum.gender == 'f' ? 'Female' : 'Male'", "as": "gender_label"}
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "age",
+      "type": "ordinal",
+      "title": "Age Group",
+      "axis": {"labelAngle": 0}
+    },
+    "y": {
+      "field": "number",
+      "type": "quantitative",
+      "aggregate": "sum"
+    },
+    "color": {
+      "field": "gender_label",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Female", "Male"],
+        "range": ["#1b9e77", "#d95f02"]
+      },
+      "title": "Masters",
+      "legend": {"title": "Gender"}    }
+  }
+}
