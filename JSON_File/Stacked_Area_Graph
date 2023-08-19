@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/ire-2016-Masters.csv"},
+  "transform": [
+    {"calculate": "datum.gender == 'f' ? 'Female' : 'Male'", "as": "gender_label"}
+  ],
+  "title": "Masters, Doctorate (Phd) or higher (in thousands)",  
+  "layer": [
+    {
+      "mark": "area",  
+      "encoding": {
+        "x": {
+          "field": "age",
+          "type": "ordinal",
+          "title": "Age Group",
+          "axis": {"labelAngle": 0}
+        },
+        "y": {
+          "field": "number",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "color": {
+          "field": "gender_label",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Female", "Male"],
+            "range": ["#1b9e77", "#d95f02"]
+          },
+          "title": "Gender"
+        }
+      }
+    },
+    {
+      "mark": {"type": "text", "opacity": 0.9, "color": "white","dx":-80},
+      "encoding": {
+        "y": {"field": "gender", "type": "ordinal","axis":null},
+        "text": {"field": "gender_label"}
+      }
+    }
+  ]
+}
