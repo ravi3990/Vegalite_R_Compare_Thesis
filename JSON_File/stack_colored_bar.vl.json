@@ -1,0 +1,57 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/dfm.csv"},
+    "mark":{"type":"bar", "size":12},
+    "encoding": {
+      "x": {
+        "field": "name",
+        "type": "nominal",
+        "axis": {"labelAngle": -90,"grid": true},
+        "sort": {"field": "sort", "op": "mean", "order": "ascending"}
+      },
+      "y": {"field": "mpg", "type": "quantitative", "scale": {"domain": [0, 35]}, "axis": {"title": "MPG\n(Miles Per Gallon)"}},
+      "fill": {
+        "field": "cyl",
+        "type": "nominal",
+        "scale": {
+          "domain": ["4", "6", "8"],
+          "range": ["#2F71A8", "#E0A414", "#999999"] 
+        },
+        "legend": {"title": "Number of cylinders"},
+        "sort": "descending" 
+      }
+    },
+    "config": {
+      "view": {"stroke": "transparent"},
+      "axis": {
+        "domainColor": "transparent",
+        "tickColor": "transparent",
+        "labelFontSize": 8,
+        "labelAngle": -90,
+        "labelAlign": "right",
+        "labelBaseline": "middle",
+        "titleFontSize": 10,
+        "titleAngle": 0,
+        "titleBaseline": "middle",
+        "titleAlign": "right",
+        "titleX": -4
+      },
+      "legend": {
+        "orient": "top",
+        "direction": "horizontal",
+        "symbolSize": 80,
+        "titleFontSize": 8,
+        "labelFontSize": 8
+      },
+      "style": {
+        "cell": {
+          "stroke": "lightgrey",
+          "strokeWidth": 1,
+          "strokeOpacity": 0.5
+        }
+      }
+    },
+    "width": 500,
+    "height": 300,
+    "title": {"text": "Data source: 1974 Motor Trend US magazine", "anchor": "start", "fontSize": 10, "frame": "group"}
+  }
