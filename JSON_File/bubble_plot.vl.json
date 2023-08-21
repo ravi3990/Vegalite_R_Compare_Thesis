@@ -1,0 +1,37 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/data_region.csv"
+  },
+  "mark": {"type": "point", "filled": true, "opacity": 0.25},
+  "encoding": {
+    "x": {
+      "field": "ave_gdp_percap",
+      "type": "quantitative",
+      "axis": {"domain": false, "title": "Average GDP per Capita (USD)"} 
+    },
+    "y": {
+      "field": "ave_life_expect",
+      "type": "quantitative",
+      "scale": {"domain": [48, 80]},
+      "axis": {"domain": false, "title": "Average Life Expectancy (years)"} 
+    },
+    "size": {"field": "totalPop", "type": "quantitative", "scale": {"type": "log"}},
+    "color": {"field": "region", "type": "nominal", "legend": {"title": "Region", "orient": "right"}}
+  },
+  "title": {"text": "Trajectory 1990-2014: Average Life Expectancy vs average GDP per Capita per Region", "fontWeight": "normal"},
+  "width": 500,
+  "height": 400,
+  "config": {
+    "legend": {"symbolSize": 300, "symbolOpacity": 1, "symbolBaseFillColor": "lightgray", "titleFontWeight": "normal"},
+    "axis": {
+      "grid": true,
+      "ticks": false,
+      "titleFontWeight": "normal",
+      "gridColor": "lightgray",
+      "gridWidth": 0.26,
+      "tickCount": 3
+    },
+    "view": {"stroke": "transparent"}
+  }
+}
