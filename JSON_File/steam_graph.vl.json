@@ -3,7 +3,7 @@
   "width": 400,
   "height": 300,
   "data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/Cite_data123.csv"},
-  "mark": "area",
+  "mark": {"type": "area","stroke":"white","strokeWidth":0.4},
   "encoding": {
     "x": {
       "timeUnit": "yearmonth",
