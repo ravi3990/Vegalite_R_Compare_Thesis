@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 1500,
+  "data": {
+    "url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/Data/covid_data_europe_monthly.csv"
+  },
+  "mark": {"type": "rect", "stroke": "white"},
+  "encoding": {
+    "x": {
+      "field": "year_mon",
+      "type": "nominal",
+      "sort": "x",
+      "timeUnit": "yearmonth",
+      "axis": {"title": null, "labelAngle": 0, "ticks": false}
+    },
+    "y": {
+      "field": "location",
+      "type": "nominal",
+      "sort": "-y",
+      "axis": {"title": null, "ticks": false}
+    },
+    "fill": {
+      "field": "monthly_new_cases_per_million",
+      "type": "quantitative",
+      "scale": {"scheme": "viridis", "reverse": true,}
+    }
+  },
+  "title": {"text": "Heatmap: monthly cases per million", "fontSize": 14},
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"domainWidth": 0.1, "tickColor": "gray", "labelFontSize": 10,"labelFontWeight":"normal"},
+    "axisX": {"labelAngle": 0, "labels": true, "labelSeparation": 7},
+    "axisY": {"labelFontSize": 10},
+    "style": {"cell": {"strokeWidth": 1}},
+    "legend": {
+      "orient": "bottom",
+      "labelFontSize": 10,
+      "labelLimit": 80
+    }
+  }
+}
