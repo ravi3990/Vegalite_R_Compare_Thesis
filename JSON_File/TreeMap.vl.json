@@ -1,0 +1,238 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/ire_counties.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [
+        {
+          "op": "count",
+          "as": "count_*"
+        }
+      ],
+      "groupby": [
+        "Province",
+        "Population"
+      ]
+    },
+    {
+      "stack": "count_*",
+      "groupby": [],
+      "as": [
+        "stack_count_Province1",
+        "stack_count_Province2"
+      ],
+      "offset": "normalize",
+      "sort": [
+        {
+          "field": "Province",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "min",
+          "field": "stack_count_Province1",
+          "as": "x"
+        },
+        {
+          "op": "max",
+          "field": "stack_count_Province2",
+          "as": "x2"
+        },
+        {
+          "op": "dense_rank",
+          "as": "rank_Population"
+        },
+        {
+          "op": "distinct",
+          "field": "Population",
+          "as": "distinct_Population"
+        }
+      ],
+      "groupby": [
+        "Province"
+      ],
+      "frame": [
+        null,
+        null
+      ],
+      "sort": [
+        {
+          "field": "Population",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "window": [
+        {
+          "op": "dense_rank",
+          "as": "rank_Province"
+        }
+      ],
+      "frame": [
+        null,
+        null
+      ],
+      "sort": [
+        {
+          "field": "Province",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "stack": "count_*",
+      "groupby": [
+        "Province"
+      ],
+      "as": [
+        "y",
+        "y2"
+      ],
+      "offset": "normalize",
+      "sort": [
+        {
+          "field": "Population",
+          "order": "ascending"
+        }
+      ]
+    },
+    {
+      "calculate": "datum.y + (datum.rank_Population - 1) * datum.distinct_Population * 0.01 / 3",
+      "as": "ny"
+    },
+    {
+      "calculate": "datum.y2 + (datum.rank_Population - 1) * datum.distinct_Population * 0.01 / 3",
+      "as": "ny2"
+    },
+    {
+      "calculate": "datum.x + (datum.rank_Province - 1) * 0.01",
+      "as": "nx"
+    },
+    {
+      "calculate": "datum.x2 + (datum.rank_Province - 1) * 0.01",
+      "as": "nx2"
+    },
+    {
+      "calculate": "(datum.nx+datum.nx2)/2",
+      "as": "xc"
+    },
+    {
+      "calculate": "(datum.ny+datum.ny2)/2",
+      "as": "yc"
+    }
+  ],
+  "vconcat": [
+    {
+      "width":800,
+      "mark": {
+        "type": "text",
+        "baseline": "middle",
+        "align": "center"
+      },
+      "encoding": {
+        "x": {
+          "aggregate": "min",
+          "field": "xc",
+          "title": "Province",
+          "axis": {
+            "orient": "top"
+          }
+        },
+        "color": {
+          "field": "Province",
+          "legend": null
+        },
+        "text": {"field": "Province"}
+      }
+    },
+    {
+      "layer": [
+        {
+          "mark": {
+            "type": "rect"
+          },
+          "encoding": {
+            "x": {
+              "field": "nx",
+              "type": "quantitative",
+              "axis": null
+            },
+            "x2": {"field": "nx2"},
+            "y": {
+              "field": "ny",
+              "type": "quantitative"
+            },
+            "y2": {"field": "ny2"},
+            "color": {
+              "field": "Province",
+              "type": "nominal",
+              "legend": null
+            },
+            "opacity": {
+              "field": "Population",
+              "type": "quantitative",
+              "legend": null
+            },
+            "tooltip": [
+              {
+                "field": "Province",
+                "type": "nominal"
+              },
+              {
+                "field": "Population",
+                "type": "quantitative"
+              }
+            ]
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "baseline": "middle"
+          },
+          "encoding": {
+            "x": {
+              "field": "xc",
+              "type": "quantitative",
+              "axis": null
+            },
+            "y": {
+              "field": "yc",
+              "type": "quantitative",
+              "axis": {
+                "title": "Population"
+              }
+            },
+            "text": {
+              "field": "Population",
+              "type": "ordinal"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "resolve": {
+    "scale": {
+      "x": "shared"
+    }
+  },
+  "config": {
+    "view": {
+      "stroke": ""
+    },
+    "concat": {"spacing": 10},
+    "axis": {
+      "domain": false,
+      "ticks": false,
+      "labels": false,
+      "grid": false
+    }
+  }
+}
