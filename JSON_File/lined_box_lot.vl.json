@@ -1,0 +1,85 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 600,
+  "height": 600,
+  "config": {
+    "view": {
+      "stroke": "transparent"
+    }
+  },
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/Data/heights123.csv"},
+  "layer": [
+    {
+      "mark": {
+        "type": "boxplot",
+        "outliers": {"color": "firebrick", "size": 50},
+        "box": {
+          "size": 110,
+          "fill": "lightgray",
+          "stroke": "black"
+        },
+        "median": {
+          "size": 110,
+          "color": "black",
+          "fontWeight": "bold",
+          "stroke": "black",
+          "strokeWidth": 3
+        }
+      },
+      "encoding": {
+        "x": {
+          "field": "height",
+          "type": "quantitative",
+          "scale": {"domain": [130, 210]},
+          "axis": {
+            "title": "",
+            "grid": true,
+            "domain": false,
+            "tickCount": 6,
+            "ticks": false,
+            "labelFontSize": 14,
+            "labelFontWeight": "normal",
+            "titleFontWeight": "normal"
+          }
+        },
+        "y": {
+          "field": "gender",
+          "type": "nominal",
+          "sort": "-y",
+          "axis": {
+            "title": "",
+            "grid": false,
+            "domain": false,
+            "ticks": false,
+            "labelFontSize": 14
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "opacity": 0.15
+      },
+      "encoding": {
+        "x": {
+          "field": "height",
+          "type": "quantitative",
+          "scale": {"domain": [130, 210]},
+          "axis": {"title": ""}
+        },
+        "y": {
+          "field": "gender",
+          "type": "nominal",
+          "axis": {"title": ""},
+          "scale": {"padding": 0.1}
+        },
+        "size": {"value": 100},
+        "tooltip": [
+          {"field": "height", "type": "quantitative", "title": "Height"},
+          {"field": "gender", "type": "nominal", "title": "Gender"}
+        ]
+      }
+    }
+  ]
+}
