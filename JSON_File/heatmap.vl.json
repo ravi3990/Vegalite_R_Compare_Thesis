@@ -22,7 +22,7 @@
     "fill": {
       "field": "monthly_new_cases_per_million",
       "type": "quantitative",
-      "scale": {"scheme": "viridis", "reverse": true,}
+      "scale": {"scheme": "viridis", "reverse": true}
     }
   },
   "title": {"text": "Heatmap: monthly cases per million", "fontSize": 14},
