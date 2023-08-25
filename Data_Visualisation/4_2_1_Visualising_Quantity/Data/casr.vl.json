@@ -1,0 +1,48 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/JSON_File/ire_counties1.csv"
+  },
+  "mark": {"type": "rect", "stroke": "white", "strokeWidth": 0.5},
+  "encoding": {
+    "size": {"field": "Population", "type": "quantitative"},
+    "color": {"field": "Province", "type": "nominal"},
+    "tooltip": [
+      {"field": "County", "type": "nominal"},
+      {"field": "Population", "type": "quantitative"}
+    ],
+    "order": {"field": "Population", "type": "quantitative", "sort": "descending"}
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "rect": {"cornerRadius": 2},
+    "background": "white"
+  },
+  "layer": [
+    {
+      "mark": {"type": "text", "baseline": "top"},
+      "encoding": {
+        "text": {"field": "County", "type": "nominal"},
+        "color": {"value": "black"},
+        "size": {"value": 10},
+        "align": {"value": "right"},
+        "baseline": {"value": "top"}
+      }
+    },
+    {
+      "mark": {"type": "rect", "stroke": "white", "strokeWidth": 0.5},
+      "encoding": {"size": {"value": 1}, "color": {"value": "white"}}
+    },
+    {
+      "mark": {"type": "text", "baseline": "bottom"},
+      "encoding": {
+        "text": {"field": "Province", "type": "nominal"},
+        "color": {"value": "#FAFAFA"},
+        "size": {"value": 42},
+        "align": {"value": "left"},
+        "baseline": {"value": "bottom"},
+        "opacity": {"value": 0.4}
+      }
+    }
+  ]
+}
