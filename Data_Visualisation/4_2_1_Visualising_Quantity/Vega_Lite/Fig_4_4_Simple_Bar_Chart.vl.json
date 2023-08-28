@@ -1,0 +1,30 @@
+{ 
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "view": {"style":""},
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/6a841c641d40d8ac3012c6edbd56cabf5db3a308/data/ire-movie-october25-2019.csv"},
+  "mark": {"type": "bar", "color": "#0072B2","size":30},
+  "encoding": {
+    "x": {
+      "field": "weekend_gross",
+      "type": "quantitative",
+      "axis": {
+        "title": "€",
+        "tickCount": 8,
+        "grid":true,
+        "domain": false,
+        "ticks":false,
+        "format":"s"
+      }
+    },
+    "y": {
+      "field": "title_short",
+      "type": "nominal",
+      "sort": {"field": "weekend_gross", "order": "descending"},
+      "axis":{"title":null,"grid":false,"domain": false,"ticks": false,"titleFontWeight":"normal"}
+    }
+  },
+  
+  "title": {"text": "Ireland Film Releases. Weekend gross Oct 25-27 2019","fontWeight":"normal","align": "right"},
+  "width": 500,
+  "height": 400
+}

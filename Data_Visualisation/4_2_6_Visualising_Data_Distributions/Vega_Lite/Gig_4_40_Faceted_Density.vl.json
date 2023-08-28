@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width":500,"height":100,
+ 
+  "data": {"url": "https://vega.github.io/editor/data/barley.json"},
+  "transform": [
+    {"density": "yield", "as": ["yield", "density"], "groupby": ["year","site"],"extent": [0,80]}
+  ],
+  "mark": {"type": "area","line":true,"strokeWidth":4},
+  "encoding": {
+    "x": {
+      "field": "yield",
+      "type": "quantitative",
+      "axis": {"tickCount": 8, "grid": true, "title": "Yield"}
+    },
+    "y": {
+      "field": "density",
+      "type": "quantitative",
+      "axis": {"title": "", "tickCount": 4 ,"grid": true,"domain": false}
+    },
+    "color": {"field": "year", "type": "nominal", "scale": {"range": [ "#0571b0","#ca0020"]},"legend": {"symbolType": "square","symbolSize":300,"symbolStrokeColor": "black","symbolStrokeWidth": 2 }},
+    "opacity": {"value": 0.4},
+    "facet": {
+      "field": "site",    
+      "type": "nominal",  
+      "columns": 1,"align":"all",
+      "title":null,
+      "sort":"ascending"
+    }
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {"domainWidth": 1, "tickSize": 6,"titleFontWeight":"normal"},
+    "headerFacet": {"labelOrient": "right","labelColor":"black","labelFontWeight":"normal" },
+    "legend": {"direction": "horizontal","orient": "bottom"}
+    
+   
+    
+  }
+}

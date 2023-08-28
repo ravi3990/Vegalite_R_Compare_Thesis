@@ -1,0 +1,44 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 500,
+  "height": 500,
+  "config": {
+    "view": {"stroke": "transparent"}
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/Data/mw_hourly_temp19.csv"
+  },
+  "transform": [{"calculate": "random()", "as": "random"}],
+  "title": "Moycullen Hourly Temperatures 2019",
+  "mark": {"type": "point", "color": "darkgray", "size": 2, "opacity": 0.4},
+  "encoding": {
+    "x": {
+      "field": "mean_hourly_temp",
+      "type": "quantitative",
+      "scale": {"domain": [-5, 25]},
+      "axis": {
+        "title": "Celsius",
+        "tickCount": 7,
+        "domain": false,
+        "ticks": false,
+        "gridOpacity": 0.7
+      }
+    },
+    "y": {
+      "field": "monthname",
+      "type": "ordinal",
+      "sort": [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ],
+      "axis": {"title": null, "domain": false, "grid": true, "gridOpacity": 0.7}
+    },
+    "yOffset": {"field": "random", "type": "quantitative"},
+    "color": {
+      "field": "day_night",
+      "scale": {"range": ["#E69F00", "#0072B2"]},
+      "legend":{"title":null,"orient": "top"}
+
+    }
+  }
+}

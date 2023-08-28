@@ -1,0 +1,12 @@
+{
+"$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"width": 600, "height": 400,
+"title":{"text":"CVPR Scopus citescore : 2011-2018","orient":"top","align": "right","fontWeight":"normal"},
+"data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/Cite_data.csv"},
+"mark": "line",
+"encoding": {
+"x": {"field": "Year", "type": "temporal","title":"Year", "axis": {"grid": false,"tickCount":6,"title":null}},
+"y": {"field": "citescore", "type": "quantitative" ,"title":"Scopus Citescore",
+"axis": {"grid": false,"tickCount":3,"titleFontWeight":"normal"}}
+}
+}

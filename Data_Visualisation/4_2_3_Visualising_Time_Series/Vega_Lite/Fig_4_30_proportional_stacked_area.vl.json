@@ -1,0 +1,57 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/Data/scopus_citescore_long.csv"
+  },
+  "width": 400,
+  "height": 300,
+  "layer": [
+    {
+      "mark": {"type": "area", "color": "black", "size": 0.2, "opacity": 0.8},
+      "encoding": {
+        "x": {"timeUnit": "yearmonth", "field": "year"},
+        "y": {"aggregate": "sum", "field": "citescore", "stack": "normalize"},
+        "color": {
+          "field": "ShortTitle",
+          "type": "nominal",
+          "scale": {"scheme": "category10"}
+                  },
+        "fill": {
+          "field": "ShortTitle",
+          "type": "nominal",
+          "scale": {"scheme": "category10"},
+          "legend": {"orient": "right", "symbolType": "square","symbolSize":200,"symbolStrokeColor":"black","symbolStrokeWidth":1,"title":null}
+        }
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "timeUnit": "year",
+      "field": "year",
+      "axis": {"domain": false, "format": "%Y", "title": null,"gridOpacity":0.5,"ticks": false}
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "citescore",
+      "stack": "normalize",
+      "axis": {
+        "format": "%",
+        "title": "citescore",
+        "titleFontWeight": "normal",
+        "tickCount": 5,
+        "tickSize": 25,
+        "tickOpacity": 0.2,"gridOpacity":0.5
+      }
+    }
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "domainWidth": 1,
+      "tickWidth": 1,
+      "tickColor": "grey",
+      "titleFontWeight": "normal"
+    }
+  }
+}

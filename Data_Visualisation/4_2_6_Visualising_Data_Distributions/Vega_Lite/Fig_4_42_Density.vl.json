@@ -1,0 +1,31 @@
+{"$schema": "https://vega.github.io/schema/vega-lite/v5.json","width":400,
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/Data/movies.json"},
+  "transform": [
+    {"density": "height", "as": ["height", "density"]}
+  ],
+  "mark": {"type":"area","color":"steelblue"},
+  "encoding": {
+    "x": {
+      "field": "height",
+      "type": "quantitative",
+      "axis": {
+        "tickCount": 10,
+        "grid": false,
+        "title": "Height","domain": false
+      }    },
+    "y": {
+      "field": "density",
+      "type": "quantitative",
+      "axis": {"title": "Density","tickCount":4,"domain": false,"ticks":false}
+    }
+  },
+  "config": {
+    "view": {"stroke": "transparent"},
+    "axis": {
+      "domainWidth": 1,
+      "tickSize": 6,
+      "titleFontWeight":"normal",
+      "gridOpacity":0.3
+    }
+  }
+}

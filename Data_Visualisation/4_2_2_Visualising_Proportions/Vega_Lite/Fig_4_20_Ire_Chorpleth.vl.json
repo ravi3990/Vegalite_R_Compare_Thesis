@@ -1,0 +1,53 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 500,
+    "title": "Population Census 16 by County in Ireland",
+    "data": {
+      "url": "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/ireland/ireland-counties.json",
+      "format": {
+        "type": "topojson",
+        "feature": "IRL_adm1"
+      }
+    },
+    "transform": [
+      {
+        "lookup": "properties.ID_1",
+        "from": {
+          "data": {
+            "url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/COVID-19_HPSC_County_Statistics_Latest_Point_Geometry.csv"
+          },
+          "key": ".ID_1",
+          "fields": ["CountyName", "Lat", "Long", "PopulationCensus16"]
+        }
+      }
+    ],
+    "projection": {
+      "type": "naturalEarth1"
+    },
+    "layer": [
+      {
+        "mark": {"type": "geoshape"},
+        "encoding": {
+          "color": {
+            "field": "PopulationCensus16",
+            "type": "quantitative",
+            "scale": {"scheme": "viridis"}
+          }
+        }
+      },
+      {
+        "mark": {"type": "text", "align": "center", "baseline": "middle", "fontWeight": "bold", "fontSize": 8},
+        "transform": [
+          {"filter": "datum.CountyName && datum.Lat && datum.Long"} 
+        ],
+        "encoding": {
+          "longitude": {"field": "Long"},
+          "latitude": {"field": "Lat"},
+          "text": {"field": "CountyName"},
+          "color": {"value": "White"}
+        }
+      }
+    ]
+  }
+  

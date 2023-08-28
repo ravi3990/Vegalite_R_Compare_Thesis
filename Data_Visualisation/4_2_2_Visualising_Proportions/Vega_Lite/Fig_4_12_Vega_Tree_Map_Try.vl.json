@@ -1,0 +1,43 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/Vegalite_R_Compare_Thesis/main/Data/ire_counties_df2.csv"},
+  "encoding": {
+    "y": {"field": "Province", "type": "ordinal"},
+    "x": {"field": "County", "type": "ordinal"}
+  },
+  "layer": [
+    {
+      "mark": "rect",
+      "encoding": {
+        "color": {
+          "field": "County",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Cork", "Galway", "Mayo", "Donegal", "Kerry", "Tipperary",
+              "Clare", "Tyrone", "Antrim", "Limerick", "Roscommon", "Down",
+              "Wexford", "Meath", "Derry", "Kilkenny", "Wicklow", "Offaly",
+              "Cavan", "Waterford", "Westmeath", "Sligo", "Laois", "Kildare",
+              "Fermanagh", "Leitrim", "Armagh", "Monaghan", "Longford",
+              "Dublin", "Carlow", "Louth"
+            ],
+            "range": [
+              "#00574C", "#762F41", "#7C3748", "#464B00", "#007167", "#0A766D",
+              "#268178", "#60641D", "#646825", "#398B82", "#A06974", "#6F7339",
+              "#473E7A", "#483F7B", "#777A46", "#504880", "#524981", "#534A82",
+              "#7A7D4A", "#559991", "#585085", "#AC7983", "#5C5588", "#5D5589",
+              "#818353", "#B07F88", "#8A8D60", "#8B8E61", "#746F9B", "#7B76A1",
+              "#7D78A2", "#807CA5"
+            ]
+          },
+          "legend": {"direction": "vertical", "gradientLength": 120},
+          "title": "County"
+        }
+      }
+    }
+    
+  ],
+  "config": {
+    "axis": {"grid": true, "tickBand": "extent"}
+  }
+}

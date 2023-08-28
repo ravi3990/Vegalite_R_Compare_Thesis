@@ -1,0 +1,38 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 300,
+  "view": {"stroke":null},
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/ire-2016-Masters.csv"},
+  "transform": [
+    {"calculate": "datum.gender == 'f' ? 'Female' : 'Male'", "as": "gender_label"},
+    {"joinaggregate": [{"op": "sum", "field": "number", "as": "total_number"}], "groupby": ["age"]}
+  ],
+  "title": {"text":"Masters, Doctorate (Phd) or higher (in thousands) per age group","fontWeight":"normal"},  
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "age",
+      "type": "ordinal",
+      "title": "Age Group",
+      "axis": {"labelAngle": 0,"ticks":false,"title":null,"labelFontWeight":"bold","domain": false}
+    },
+    "y": {
+      "field": "number",
+      "type": "quantitative",
+      "stack": "normalize",
+      "title": "Proportion",
+      "axis": {"format": ".0%","ticks":false,"title":null,"tickCount":4,"domain": false} 
+    },
+    "color": {
+      "field": "gender_label",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Female", "Male"],
+        "range": ["#1b9e77", "#d95f02"]
+      },
+      "title": "Gender",
+      "legend": {"title": ""}
+    }
+  }
+}

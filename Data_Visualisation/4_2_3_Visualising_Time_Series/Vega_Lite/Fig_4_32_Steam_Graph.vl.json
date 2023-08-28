@@ -1,0 +1,42 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 400,
+  "height": 300,
+  "data": {"url": "https://raw.githubusercontent.com/ravi3990/ARC/master/data/Cite_data123.csv"},
+  "mark": {"type": "area","stroke":"white","strokeWidth":0.2},
+  "encoding": {
+    "x": {
+      "timeUnit": "yearmonth",
+      "field": "Year",
+      "axis": {
+        "domain": false,
+        "format": "%Y",
+        "tickSize": 0,
+        "grid": false,
+        "ticks": false,
+        "title": null
+      }
+    },
+    "y": {
+      "aggregate": "sum",
+      "field": "citescore",
+      "axis": null,
+      "stack": "center"
+    },
+    "color": {"field": "Short_Title", "scale": {"scheme": "category10"}}
+  },
+  "config": {
+    "view": {
+      "stroke": ""
+    },
+    "legend": {
+    "title": null,
+    "direction": "vertical",
+    "symbolType": "square",
+    "symbolStrokeColor": "black",
+    "symbolStrokeWidth": 1,
+    "orient": "right",
+    "gridAlign": "each"
+  }
+  }
+}
